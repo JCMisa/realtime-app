@@ -20,6 +20,7 @@ export const getAccessType = (userType: UserType) => {
   }
 };
 
+// get the current time since the document was created
 export const dateConverter = (timestamp: string): string => {
   const timestampNum = Math.round(new Date(timestamp).getTime() / 1000);
   const date: Date = new Date(timestampNum * 1000);
