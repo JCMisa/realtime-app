@@ -15,6 +15,9 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "DocSync",
   description: "DocSync: Where ideas come to life, together.",
+  icons: {
+    icon: ["/assets/icons/logo.svg"],
+  },
 };
 
 export default function RootLayout({
