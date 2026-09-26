@@ -8,7 +8,7 @@ import {
 import {
   InboxNotification,
   InboxNotificationList,
-  LiveblocksUIConfig,
+  LiveblocksUiConfig,
 } from "@liveblocks/react-ui";
 import {
   useInboxNotifications,
@@ -22,7 +22,7 @@ const Notifications = () => {
   const { count } = useUnreadInboxNotificationsCount();
 
   const unreadNotifications = inboxNotifications.filter(
-    (notification) => !notification.readAt
+    (notification) => !notification.readAt,
   );
 
   return (
@@ -39,7 +39,7 @@ const Notifications = () => {
         )}
       </PopoverTrigger>
       <PopoverContent align="end" className="shad-popover">
-        <LiveblocksUIConfig
+        <LiveblocksUiConfig
           overrides={{
             INBOX_NOTIFICATION_TEXT_MENTION: (user: ReactNode) => (
               <>{user} mentioned you.</>
@@ -101,7 +101,7 @@ const Notifications = () => {
                 />
               ))}
           </InboxNotificationList>
-        </LiveblocksUIConfig>
+        </LiveblocksUiConfig>
       </PopoverContent>
     </Popover>
   );

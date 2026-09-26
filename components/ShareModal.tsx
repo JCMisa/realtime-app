@@ -48,7 +48,7 @@ const ShareModal = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button
           className="gradient-blue flex h-9 gap-1 px-4"
           disabled={currentUserType !== "editor"}
@@ -97,16 +97,22 @@ const ShareModal = ({
 
         <div className="my-2 space-y-2">
           <ul className="flex flex-col">
-            {collaborators.map((collaborator) => (
-              <Collaborator
-                key={collaborator.id}
-                roomId={roomId}
-                creatorId={creatorId}
-                email={collaborator.email}
-                collaborator={collaborator}
-                user={user.info}
-              />
-            ))}
+            {!collaborators || collaborators.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                No collaborators yet.
+              </p>
+            ) : (
+              collaborators.map((collaborator) => (
+                <Collaborator
+                  key={collaborator.id}
+                  roomId={roomId}
+                  creatorId={creatorId}
+                  email={collaborator.email}
+                  collaborator={collaborator}
+                  user={user.info}
+                />
+              ))
+            )}
           </ul>
         </div>
       </DialogContent>
