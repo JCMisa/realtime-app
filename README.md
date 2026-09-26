@@ -114,13 +114,17 @@ touch .env.local
 4. Add the required environment variables:
 
 ```env
+# Clerk
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+# Liveblocks
 LIVEBLOCKS_SECRET_KEY=your_liveblocks_secret_key
 
-# Optional Sentry configuration
-SENTRY_DSN=your_sentry_dsn
-NEXT_PUBLIC_SENTRY_DSN=your_public_sentry_dsn
+# Sentry (required for source map uploads on production builds)
+SENTRY_AUTH_TOKEN=your_sentry_auth_token
 ```
 
 > The app expects Clerk keys for authentication and a Liveblocks secret for room and access management. The Liveblocks auth endpoint in `app/api/liveblocks-auth/route.ts` uses the server-side secret.
