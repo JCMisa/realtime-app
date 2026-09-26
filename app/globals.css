@@ -1,11 +1,10 @@
+@import "@liveblocks/react-ui/styles.css";
+@import "@liveblocks/react-lexical/styles.css";
+@import "../styles/dark-theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "@liveblocks/react-ui/styles.css";
-@import "@liveblocks/react-lexical/styles.css";
-
-@import "../styles/dark-theme.css";
 
 /* ========================================== TAILWIND STYLES */
 @layer base {
@@ -235,24 +234,24 @@
 }
 
 .lb-button:where(
-    [data-variant="default"]:not(
-        :is(
-            :enabled:hover,
-            :enabled:focus-visible,
-            [aria-expanded="true"],
-            [aria-selected="true"]
-          )
-      )
-  ) {
+  [data-variant="default"]:not(
+    :is(
+      :enabled:hover,
+      :enabled:focus-visible,
+      [aria-expanded="true"],
+      [aria-selected="true"]
+    )
+  )
+) {
   color: #b4c6ee;
 }
 
 .lb-button:where(
-    :enabled:hover,
-    :enabled:focus-visible,
-    [aria-expanded="true"],
-    [aria-selected="true"]
-  ) {
+  :enabled:hover,
+  :enabled:focus-visible,
+  [aria-expanded="true"],
+  [aria-selected="true"]
+) {
   --lb-button-background: #161e30;
 
   color: #b4c6ee;

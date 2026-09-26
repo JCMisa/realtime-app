@@ -3,7 +3,7 @@
 import { ClientSideSuspense, RoomProvider } from "@liveblocks/react/suspense";
 import { Editor } from "@/components/editor/Editor";
 import Header from "@/components/Header";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import ActiveCollaborators from "./ActiveCollaborators";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -26,7 +26,7 @@ const CollaborativeRoom = ({
   const inputRef = useRef<HTMLInputElement>(null); // HTMLDivElement before
 
   const updateTitleHandler = async (
-    e: React.KeyboardEvent<HTMLInputElement>
+    e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     if (e.key === "Enter") {
       setLoading(true);
@@ -124,12 +124,12 @@ const CollaborativeRoom = ({
                 currentUserType={currentUserType}
               />
 
-              <SignedOut>
+              <Show when="signed-out">
                 <SignInButton />
-              </SignedOut>
-              <SignedIn>
+              </Show>
+              <Show when="signed-in">
                 <UserButton />
-              </SignedIn>
+              </Show>
             </div>
           </Header>
           <Editor roomId={roomId} currentUserType={currentUserType} />

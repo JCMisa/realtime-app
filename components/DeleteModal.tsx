@@ -50,13 +50,15 @@ export const DeleteModal = ({ roomId }: DeleteModalProps) => {
       </DialogTrigger>
       <DialogContent className="shad-dialog">
         <DialogHeader>
-          <Image
-            src="/assets/icons/delete-modal.svg"
-            alt="delete"
-            width={48}
-            height={48}
-            className="mb-4"
-          />
+          <div className="flex items-center justify-center">
+            <Image
+              src="/assets/icons/delete-modal.svg"
+              alt="delete"
+              width={48}
+              height={48}
+              className="mb-4"
+            />
+          </div>
           <DialogTitle>Delete document</DialogTitle>
           <DialogDescription>
             Are you sure you want to delete this document? This action cannot be
@@ -65,8 +67,10 @@ export const DeleteModal = ({ roomId }: DeleteModalProps) => {
         </DialogHeader>
 
         <DialogFooter className="mt-5">
-          <DialogClose asChild className="w-full bg-dark-400 text-white">
-            Cancel
+          <DialogClose asChild>
+            <Button variant="outline" className="w-full bg-dark-400 text-white">
+              Cancel
+            </Button>
           </DialogClose>
 
           <Button

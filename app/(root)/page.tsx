@@ -2,10 +2,9 @@ import AddDocumentBtn from "@/components/AddDocumentBtn";
 import { DeleteModal } from "@/components/DeleteModal";
 import Header from "@/components/Header";
 import Notifications from "@/components/Notifications";
-import { Button } from "@/components/ui/button";
 import { getDocuments } from "@/lib/actions/room.actions";
 import { dateConverter } from "@/lib/utils";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { Show, UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +15,7 @@ const Home = async () => {
   if (!clerkUser) redirect("/sign-in");
 
   const roomDocuments = await getDocuments(
-    clerkUser.emailAddresses[0].emailAddress
+    clerkUser.emailAddresses[0].emailAddress,
   );
 
   return (
@@ -24,9 +23,9 @@ const Home = async () => {
       <Header className="sticky left-0 top-0">
         <div className="flex items-center gap-2 lg:gap-4">
           <Notifications />
-          <SignedIn>
+          <Show when="signed-in">
             <UserButton />
-          </SignedIn>
+          </Show>
         </div>
       </Header>
 
